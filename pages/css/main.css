@@ -1,0 +1,32 @@
+body{
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+img.bg{
+	min-height: 100%;
+	min-width: 1024px;
+	width: 100%;
+	height: auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+@media screen and (max-width: 1024px){
+	img.bg{
+		left: 50%;
+		margin-left: -512px;
+	}
+}
+
+div.foreground{
+	position: relative;
+	color: #fff;
+	text-shadow: 0 1px 1px rgba(0,0,0,.5) ;
+}
+
+li.noicon{
+	margin-left: 0px;
+	list-style-type: none;
+}
