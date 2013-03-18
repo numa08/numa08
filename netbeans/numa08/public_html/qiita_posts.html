@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Github Repos</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/background.css">
+    </head>
+    <body>
+        <div class="container foreground">
+            <div class="row">
+                <h3>Qiita</h3>
+                <a href="http://qiita.com/users/numa08" target="_blank">qiita/numa08</a>
+            </div>
+            <div class="row">
+                <h3>Posts</h3>
+                <table class="table">
+                    <tbody id="posts_table"></tbody>
+                </table>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/libs/jquery-1.8.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            $.getJSON("https://qiita.com/api/v1/users/numa08/items", function(posts){
+                  var postTable = $("#posts_table");
+                  for(var i = 0; i < posts.length; i++){
+                    var post = posts[i];
+                    var link = $("<a/>").attr("href", post.url).attr("target","_blank").text(post.title);
+                    var tableLine = $("<tr/>").append($("<td/>").append(link));
+                    postTable.append(tableLine);
+                }
+            });
+        </script>
+    </body>
+</html>

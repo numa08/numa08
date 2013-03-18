@@ -30,3 +30,11 @@ li.noicon{
 	margin-left: 0px;
 	list-style-type: none;
 }
+
+a{
+    color: #929292;
+}
+
+a:hover{
+    color: #8AD3AF;
+}
