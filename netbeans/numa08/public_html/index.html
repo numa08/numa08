@@ -7,20 +7,11 @@
         <meta name="viewroot" content="width=device-width">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+        <link rel="stylesheet" type="text/css" href="css/social-button">
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" type="text/css" href="css/jquery.pageslide.css">
     </head>
     <body>
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id))
-                    return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
         <p><img class="bg" src="img/back_ground.png"></p>
         <div class="container foreground">
             <div class="row">            
@@ -36,7 +27,7 @@
                     </li>
                     <li class="noicon">
                         <img src="img/icon/blogger.png">
-                        <a href="http://numa08.blogspot.jp/" target="_blank">numa08エンジニア風の日記</a>
+                        <a href="http;//numa08.blogspot.jp/" target="_blank">numa08エンジニア風の日記</a>
                     </li>
                     <li class="noicon">
                         <img src="img/icon/4sq.png">
@@ -49,11 +40,11 @@
                 <ul>
                     <li class="noicon">
                         <img src="img/icon/github.png">
-                        <a href="javascript:$.pageslide({ direction: 'left', href: 'repositories.html' })">gitbhu/numa08</a>
+                       <a href="javascript:$.pageslide({ direction: 'left', href: 'repositories.html' })">gitbhu/numa08</a>
                     </li>
                     <li class="noicon">
                         <img src="img/icon/google_play.png">
-                        <a href="javascript:$.pageslide({ direction: 'left', href: 'android_apps.html' })">GooglePlay/numa08</a>
+                         <a href="javascript:$.pageslide({ direction: 'left', href: 'android_apps.html' })">GooglePlay/numa08</a>
                     </li>
                     <li class="noicon">
                         <img src="img/icon/qiita.png">
@@ -61,29 +52,39 @@
                     </li>
                     <li class="noicon">
                         <img src="img/icon/android.png">
-                        <a href="javascript:$.pageslide({ direction: 'left', href: 'android_tao.html' })">Android勉強会</a>
+                        <a href="javascript:$.pageslide({ direction: 'left', href: 'index.html#' })">Android勉強会</a>
                     </li>
                 </ul>
             </div>
-            <span>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-text="via numa08" data-lang="ja" data-related="numa08">ツイート</a>
-                <script>!function(d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (!d.getElementById(id)) {
-                            js = d.createElement(s);
-                            js.id = id;
-                            js.src = "//platform.twitter.com/widgets.js";
-                            fjs.parentNode.insertBefore(js, fjs);
-                        }
-                    }(document, "script", "twitter-wjs");</script>
-            </span>
-
-            <span>
-                <a href="http://b.hatena.ne.jp/entry/http://numa08.net/" class="hatena-bookmark-button" data-hatena-bookmark-title="numa08" data-hatena-bookmark-layout="standard-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-            </span>
-            <span class="fb-like" data-href="http://numa08.net/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></span>
         </div>
         <script type="text/javascript" src="js/libs/jquery-1.8.3/jquery.min.js"></script>
         <script type='text/javascript' src="js/libs/jquery.pageslide.min.js"></script>
+
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));</script>
+
+        <div class="socialButtonFundation">
+
+          <div class="socialButton">
+            <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          </div>
+
+          <div class="socialButton">
+            <div id="fb-root"></div>
+            <div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
+          </div>
+
+          <div class="socialButton">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="roomos_staff" data-lang="ja">ツイート</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          </div>
+
+        </div>
+
     </body>
 </html>
