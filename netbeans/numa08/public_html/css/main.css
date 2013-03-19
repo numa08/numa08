@@ -40,6 +40,7 @@ a:hover{
 }
 
 .foot{
-    position: absolute;
-    bottom: 0;
+    min-height: 10px;
+    float: left;
+    margin-right: 5px;
 }
