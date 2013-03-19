@@ -38,3 +38,8 @@ a{
 a:hover{
     color: #8AD3AF;
 }
+
+.foot{
+    position: absolute;
+    bottom: 0;
+}
