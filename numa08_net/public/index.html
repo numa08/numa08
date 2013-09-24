@@ -1,10 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
-  hello play
-</body>
+<html>
+    <head>
+        <title>numa08</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="description" content="numa08 index">
+        <meta name="viewroot" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+        <link rel="stylesheet" type="text/css" href="css/social-button.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery.pageslide.css">
+    </head>
+    <body>
+        <p><img class="bg" src="img/back_ground.png"></p>
+        <div class="container foreground">
+            <div class="row">            
+                <h1 id="name">numa08</h1>
+                <p id="profile">目が覚めたら猫耳帽子の美少女が待っている世界を求める毎日。</p>
+            </div>
+            <div class="row">
+                <h3>Social</h3>
+                <ul>
+                    <li class="noicon">
+                        <img src="https://twitter.com/images/resources/twitter-bird-16x16.png">
+                        <a href="http://twitter.com/numa08/" target="_blank">@numa08</a>
+                    </li>
+                    <li class="noicon">
+                        <img src="img/icon/hatena.png">
+                        <a href="http://numa08.hateblo.jp/" target="_blank">numa08　エンジニアだったり</a>
+                    </li>
+                    <li class="noicon">
+                        <img src="img/icon/4sq.png">
+                        <a href="https://ja.foursquare.com/numa08/" target="_blank">numanuma08</a>
+                    </li>
+                    <li class="noicon">
+                        <img src="img/icon/blogger.png">
+                        <a href="http://numa08.blogspot.jp/" target="_blank">numa08エンジニア風の日記</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <h3>Develop</h3>
+                <ul>
+                    <li class="noicon">
+                        <img src="img/icon/github.png">
+                       <a href="javascript:$.pageslide({ direction: 'left', href: 'repositories.html' })">github/numa08</a>
+                    </li>
+                    <li class="noicon">
+                        <img src="img/icon/google_play.png">
+                         <a href="javascript:$.pageslide({ direction: 'left', href: 'android_apps.html' })">GooglePlay/numa08</a>
+                    </li>
+                    <li class="noicon">
+                        <img src="img/icon/qiita.png">
+                        <a href="javascript:$.pageslide({ direction: 'left', href: 'qiita_posts.html' })">Qiita/numa08</a>
+                    </li>
+                    <li class="noicon">
+                        <img src="img/icon/android.png">
+                        <a href="javascript:$.pageslide({ direction: 'left', href: 'android_tao.html' })">Android勉強会</a>
+                    </li>
+                    <li class="noicon">
+                        <img src="img/icon/scala.png">
+                        <a href="http://numa08.github.io/scala_za/">新宿Scala座</a>
+                    </li>
+                </ul>
+            </div>
+                    <div class="socialButtonFundation">
+
+          <div class="socialButton">
+            <a href="http://b.hatena.ne.jp/entry/http://numa08.net/" class="hatena-bookmark-button" data-hatena-bookmark-title="numa08" data-hatena-bookmark-layout="standard-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          </div>
+
+          <div class="socialButton">
+              <div id="fb-root"></div>
+              <div class="fb-like" data-href="http://numa08.net/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>         
+          </div>
+
+          <div class="socialButton">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-text="via numa08" data-lang="ja" data-related="numa08">ツイート</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          </div>
+
+        </div>
+        <script type="text/javascript" src="js/libs/jquery-1.8.3/jquery.min.js"></script>
+        <script type='text/javascript' src="js/libs/jquery.pageslide.min.js"></script>
+
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));</script>
+
+
+        </div>
+
+    </body>
 </html>
