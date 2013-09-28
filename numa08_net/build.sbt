@@ -10,5 +10,3 @@ libraryDependencies ++= Seq(
 
 play.Project.playScalaSettings
 
-libraryDependencies += "commons-daemon" % "commons-daemon" % "1.0.15"
-
