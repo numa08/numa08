@@ -16,7 +16,7 @@ app_start_script="${app_home}/target/universal/stage/bin/${app_name}"
 run_arg_port="-Dhttp.port=10008"
 run_arg_pid="-Dpidfile.path=${app_pid_file}"
 
-app_pid=-1
+app_pid=0
 
 check_pids(){
   if ! mkdir -p "${pid_path}"; then
@@ -26,7 +26,7 @@ check_pids(){
   if [ -f "${app_pid_file}" ]; then
     app_pid=$(cat "${app_pid_file}")
   else
-    app_pid=-1
+    app_pid=0
   fi
 }
 
@@ -55,7 +55,7 @@ start(){
 }
 
 stop(){
-  check_pid
+  check_pids
   echo -n "Stopping ${app_name}"
 
   kill -15 ${app_pid}
@@ -66,6 +66,7 @@ stop(){
   else
     echo -e "\t\t [\033[1;31m  FAILED  \033[0m]"
   fi
+  rm -rf ${app_pid_file}
 
   return $retval
 }
