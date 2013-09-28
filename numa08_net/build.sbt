@@ -1,6 +1,6 @@
 name := "numa08_net"
 
-version := "1.0-SNAPSHOT"
+version := "2.0"
 
 libraryDependencies ++= Seq(
   jdbc,
