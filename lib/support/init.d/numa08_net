@@ -43,7 +43,7 @@ start(){
   check_app
   echo -n "Startting ${app_name}"
 
-  sh ${app_start_script} ${run_arg_port} ${run_arg_pid} 2>&1 &
+  sh ${app_start_script} ${run_arg_port} ${run_arg_pid} >/dev/null 2>&1 &
   local retval=$?
   if [[ $retval == 0 ]];then
     echo -e "\t\t [\033[1;32m  OK  \033[0m]"
