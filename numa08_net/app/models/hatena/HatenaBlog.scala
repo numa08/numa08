@@ -2,24 +2,27 @@ package models.hatena
 
 import scala.collection.JavaConversions._
 import org.jsoup.Jsoup
-import models.Content
-import models.ContentCreator
 import java.net.URL
+import models.SocialContent
+import controllers.routes
+import controllers.Assets
+import models._
 
-case class HatenaBlog(title : String, url : String, favicon : String) extends Content
+
+case class HatenaBlog(title : String, url : String, favicon : String)
 case class HatenaEntry(title : String, url : String)
 object HatenaBlog {
-
+	val URL = "http://numa08.hateblo.jp/"
+	val FEED_URL = URL + "/feed"
 }
-class HatenaBlogCreator extends ContentCreator {
+class HatenaBlogCreator extends SocialContentCreator{
   
-  def create : HatenaBlog = {
-    val url = "http://numa08.hateblo.jp/"
-    val title = Jsoup.connect(url)
+  def create : SocialContent = {
+    val title = Jsoup.connect(HatenaBlog.URL)
     				 .get()
     				 .title()
-    val favicon = "img/icon/hatena.png"
-    val hatenaBlog = HatenaBlog(title, url, favicon)
+    val favicon = routes.Assets.at("img/icon/hatena.png").toString()
+    val hatenaBlog = InternalSocialContent(title, favicon, "javascript:$.pageslide({ direction: 'left', href: 'hatena_blog' })")
     hatenaBlog
   }
 }

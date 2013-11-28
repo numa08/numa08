@@ -1,4 +1,4 @@
-@(hatena : models.hatena.HatenaBlog)
+@(socials:List[models.SocialContent])
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,22 +22,21 @@
             <div class="row">
                 <h3>Social</h3>
                 <ul>
-                    <li class="noicon">
-                        <img src="https://twitter.com/images/resources/twitter-bird-16x16.png">
-                        <a href="http://twitter.com/numa08/" target="_blank">@@numa08</a>
-                    </li>
-                    <li class="noicon">
-                        <img src="@routes.Assets.at(hatena.favicon)">
-                        <a href="javascript:$.pageslide({ direction: 'left', href: 'hatena_blog' })">@hatena.title</a>
-                    </li>
-                    <li class="noicon">
-                        <img src="@routes.Assets.at("img/icon/4sq.png")">
-                        <a href="https://ja.foursquare.com/numa08/" target="_blank">numanuma08</a>
-                    </li>
-                    <li class="noicon">
-                        <img src="@routes.Assets.at("img/icon/blogger.png")">
-                        <a href="http://numa08.blogspot.jp/" target="_blank">numa08エンジニア風の日記</a>
-                    </li>
+                @for(content <- socials) {
+                	<li class="noicon">
+                		@content match {
+                			case ext : models.ExternalSocialContent => {
+                				<img src="@ext.favicon" alt="@ext.title" />
+                				<a href="@ext.link" target="_blank">@ext.title</a>
+                			}
+                			
+                			case int : models.InternalSocialContent => {
+                				<img src="@int.favicon" alt="@int.title" />
+                				<a href="@int.link">@int.title</a>
+                			}	
+                		}
+                	</li>
+                }
                 </ul>
             </div>
             <div class="row">
