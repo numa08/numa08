@@ -1,4 +1,4 @@
-@(hatena : models.hatena.HatenaBlog)
+@(hatenaTitle : String, hatenaUrl : java.net.URL)
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,7 +14,7 @@
 	<div class="container foreground">
 		<div class="row">
 			<h3>Hatena blog</h3>
-			<a href="@hatena.url" target="_blank">@hatena.title</a>
+			<a href="@hatenaUrl" target="_blank">@hatenaTitle</a>
 		</div>
 		<div class="row">
 			<h3>Posts</h3>
