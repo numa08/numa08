@@ -4,7 +4,7 @@ import scala.concurrent.Future
 
 import java.net.URL
 import models.InternalSocialContent
-import models.blogger.BloggerCreator
+import models.blogger._
 import models.foursquare.FourSquareCreator
 import models.hatena._
 import models.twitter.TwitterCreator
@@ -41,5 +41,17 @@ object Application extends Controller {
     	val content = views.html.hatenablog(title, new URL(HatenaBlog.URL))
     	Ok(content)
     }
+  }
+  
+  def blogger = Action.async{
+    val futureImple = Future(new BloggerCreator().create)
+    futureImple.map{ blogger => 
+      val title = hatena match {
+        case c : InternalSocialContent => c.title
+        case _ => ""
+      }
+      val content = views.html.blogger(title, new URL(Blogger.URL))
+      Ok(content)
+      }
   }
 }
