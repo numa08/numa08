@@ -4,6 +4,7 @@ import models.blogger.BloggerCreator
 import models.hatena.HatenaBlogCreator
 import java.net.URI
 import java.net.URL
+import models.booklog.BooklogCreator
 
 abstract class Content
 
@@ -21,7 +22,8 @@ trait SocialContentCreator {
 
 object ContentCreatorFactory {
   val creators = Map("Blogger" -> new BloggerCreator(),
-		  			 "HatenaBlog"  -> new HatenaBlogCreator())
+		  			 "HatenaBlog"  -> new HatenaBlogCreator(),
+		  			 "Booklog"  -> new BooklogCreator())
 		  			 
   def buildByName(name : String) : Option[SocialContentCreator] = creators.get(name)
 

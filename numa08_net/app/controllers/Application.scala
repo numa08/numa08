@@ -1,28 +1,22 @@
 package controllers
 
-import scala.concurrent.Future
 import java.net.URL
-import models.InternalSocialContent
+import java.net.URI
 import models.blogger._
+import models.booklog.BooklogCreator
+import models.ContentCreatorFactory
+import models.EntryPage
+import models.EntryContent
 import models.foursquare.FourSquareCreator
 import models.hatena._
+import models.InternalSocialContent
 import models.twitter.TwitterCreator
+import models.SocialContentCreator
 import play.api._
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.mvc._
-import models.EntryPage
-import models.EntryContent
-import java.net.URI
-import models.ContentCreatorFactory
-import models.SocialContentCreator
-import models.InternalSocialContent
-import models.EntryContent
-import models.InternalSocialContent
+import scala.concurrent.Future
 import views.html.defaultpages.badRequest
-import models.InternalSocialContent
-import models.InternalSocialContent
-import models.EntryPage
-
 
 object Application extends Controller {
 
@@ -32,6 +26,7 @@ object Application extends Controller {
     	  			 new HatenaBlogCreator() ::
     	  			 new FourSquareCreator() ::
     	  			 new BloggerCreator() ::
+    	  			 new BooklogCreator() ::
     	  			 Nil
       val contents = creators.map(_.create)
       contents
