@@ -37,7 +37,7 @@ class BloggerFeedAcuire {
     				 .getElementsByTag("entry")
     				 .map(elem => {
     				   val title = elem.getElementsByTag("title")(0).text()
-    				   val link  = elem.getElementsByTag("link")(0).attr("href")
+    				   val link  = elem.getElementsByTag("feedburner:origLink")(0).text
     				   BloggerFeed(title, link)
     				 }).toList
     feeds

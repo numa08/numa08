@@ -41,6 +41,7 @@ object Application extends Controller {
     	Ok(content)
     }
   }
+  
   def blog(service : String) = Action.async{
     val page = ContentCreatorFactory.buildByName(service) match {
       case None => Future(BadRequest)
