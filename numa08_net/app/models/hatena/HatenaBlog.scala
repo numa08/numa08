@@ -7,6 +7,7 @@ import models.SocialContent
 import controllers.routes
 import controllers.Assets
 import models._
+import java.net.URI
 
 
 case class HatenaBlog(title : String, url : String, favicon : String)
@@ -22,7 +23,8 @@ class HatenaBlogCreator extends SocialContentCreator{
     				 .get()
     				 .title()
     val favicon = routes.Assets.at("img/icon/hatena.png").toString()
-    val hatenaBlog = InternalSocialContent(title, favicon, "javascript:$.pageslide({ direction: 'left', href: 'hatena_blog' })")
+    val hatenaBlog = InternalSocialContent(title, favicon, "javascript:$.pageslide({ direction: 'left', href: 'blog/HatenaBlog' })",
+    										new URL(HatenaBlog.URL), new URI("../hatena_blog_feeds"))
     hatenaBlog
   }
 }

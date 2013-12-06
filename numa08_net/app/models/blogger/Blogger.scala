@@ -3,9 +3,11 @@ package models.blogger
 import scala.collection.JavaConversions._
 import org.jsoup.Jsoup
 import controllers.routes
+import models.InternalSocialContent
 import models.SocialContent
 import models.SocialContentCreator
-import models.InternalSocialContent
+import java.net.URL
+import java.net.URI
 
 object Blogger {
   val URL = "http://numa08.blogspot.jp/"
@@ -20,7 +22,8 @@ class BloggerCreator extends SocialContentCreator{
     				 .get()
     				 .title()
     val favicon = routes.Assets.at("img/icon/blogger.png").toString()
-    val blogger = InternalSocialContent(title, favicon , "javascript:$.pageslide({ direction: 'left', href: 'blogger' })")
+    val blogger = InternalSocialContent(title, favicon , "javascript:$.pageslide({ direction: 'left', href: 'blog/Blogger' })",
+    									new URL(Blogger.URL), new URI("../blogger_feeds"))
     blogger
   }
 }

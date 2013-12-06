@@ -1,9 +1,9 @@
-@(hatenaTitle : String, hatenaUrl : java.net.URL)
+@(entryPage : models.EntryPage, entryContent : models.EntryContent)
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>Hatena blog</title>
+	<title>@entryPage.pageTitle</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("css/bootstrap.css")">
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("css/bootstrap-responsive.css")">
@@ -13,11 +13,11 @@
 <body>
 	<div class="container foreground">
 		<div class="row">
-			<h3>Hatena blog</h3>
-			<a href="@hatenaUrl" target="_blank">@hatenaTitle</a>
+			<h3>@entryPage.pageTitle</h3>
+			<a href="@entryContent.contentUrl" target="_blank">@entryContent.contentTitle</a>
 		</div>
 		<div class="row">
-			<h3>Posts</h3>
+			<h3>@entryPage.entryTitle</h3>
 			<table class="table">
 				<tbody id="posts_table"></tbody>
 			</table>
@@ -25,11 +25,11 @@
 	</div>
 	<script type="text/javascript" src="@routes.Assets.at("js/libs/jquery-1.8.3/jquery.min.js")"></script>
 	<script type="text/javascript">
-		$.getJSON("hatena_blog_feeds", function(posts) {
+		$.getJSON("@entryContent.apiUrl", function(posts) {
 			var postTable = $("#posts_table");
 			for(var i = 0 ; i < posts.length; i++) {
 				var post = posts[i];
-				var link = $("<a/>").attr("href", posts.url).attr("target",  "_blank").text(post.title);
+				var link = $("<a/>").attr("href", post.url).attr("target",  "_blank").text(post.title);
 				var tableLine = $("<tr/>").append($("<td/>").append(link));
 				postTable.append(tableLine);
 			}

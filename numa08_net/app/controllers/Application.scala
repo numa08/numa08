@@ -1,7 +1,6 @@
 package controllers
 
 import scala.concurrent.Future
-
 import java.net.URL
 import models.InternalSocialContent
 import models.blogger._
@@ -11,6 +10,18 @@ import models.twitter.TwitterCreator
 import play.api._
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.mvc._
+import models.EntryPage
+import models.EntryContent
+import java.net.URI
+import models.ContentCreatorFactory
+import models.SocialContentCreator
+import models.InternalSocialContent
+import models.EntryContent
+import models.InternalSocialContent
+import views.html.defaultpages.badRequest
+import models.InternalSocialContent
+import models.InternalSocialContent
+import models.EntryPage
 
 
 object Application extends Controller {
@@ -30,28 +41,23 @@ object Application extends Controller {
     	Ok(content)
     }
   }
-  
-  def hatena =  Action.async{
-    val futureImple = Future(new HatenaBlogCreator().create)
-    futureImple.map{ hatena =>
-    	val title = hatena match {
-        case c : InternalSocialContent => c.title
-        case _ => ""
+  def blog(service : String) = Action.async{
+    val page = ContentCreatorFactory.buildByName(service) match {
+      case None => Future(BadRequest)
+      case Some(creator) => { 
+        val futureImple = Future(creator.create)
+        val result = futureImple.map{ content => content match {
+          case c: InternalSocialContent => {
+            val entryPage = EntryPage(service, "Posts")
+            val entryContent = EntryContent(c.url, c.title, c.apiUri)
+            val page = views.html.entries(entryPage, entryContent)
+            Ok(page)
+          }
+          case _ => BadRequest(service + " does not available")
+        }}
+        result
       }
-    	val content = views.html.hatenablog(title, new URL(HatenaBlog.URL))
-    	Ok(content)
     }
-  }
-  
-  def blogger = Action.async{
-    val futureImple = Future(new BloggerCreator().create)
-    futureImple.map{ blogger => 
-      val title = hatena match {
-        case c : InternalSocialContent => c.title
-        case _ => ""
-      }
-      val content = views.html.blogger(title, new URL(Blogger.URL))
-      Ok(content)
-      }
+    page
   }
 }

@@ -4,8 +4,7 @@
 
 # Home page
 GET     /                           	controllers.Application.index
-GET		/hatena_blog					controllers.Application.hatena
-GET		/blogger						controllers.Application.blogger
+GET		/blog/:service					controllers.Application.blog(service)
 GET		/hatena_blog_feeds				controllers.BackgroundApis.hatenaBlogFeeds
 GET		/blogger_feeds					controllers.BackgroundApis.bloggerFeeds
 
