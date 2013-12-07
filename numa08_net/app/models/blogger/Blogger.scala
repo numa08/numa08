@@ -8,6 +8,8 @@ import models.SocialContent
 import models.SocialContentCreator
 import java.net.URL
 import java.net.URI
+import models.EntryAcquire
+import models.Entry
 
 object Blogger {
   val URL = "http://numa08.blogspot.jp/"
@@ -23,14 +25,14 @@ class BloggerCreator extends SocialContentCreator{
     				 .title()
     val favicon = routes.Assets.at("img/icon/blogger.png").toString()
     val blogger = InternalSocialContent(title, favicon , "javascript:$.pageslide({ direction: 'left', href: 'blog/Blogger' })",
-    									new URL(Blogger.URL), new URI("../blogger_feeds"))
+    									new URL(Blogger.URL), new URI("../api/feed/Blogger"))
     blogger
   }
 }
 
-class BloggerFeedAcuire {
+class BloggerFeedAcquire extends EntryAcquire {
   
-  def acuire : List[BloggerFeed] = {
+  def acquire : List[Entry] = {
     val url = Blogger.FEED_URL
     val feeds = Jsoup.connect(url)
     				 .get()
@@ -38,7 +40,7 @@ class BloggerFeedAcuire {
     				 .map(elem => {
     				   val title = elem.getElementsByTag("title")(0).text()
     				   val link  = elem.getElementsByTag("feedburner:origLink")(0).text
-    				   BloggerFeed(title, link)
+    				   Entry(title, link)
     				 }).toList
     feeds
   }

@@ -11,7 +11,6 @@ import java.net.URI
 
 
 case class HatenaBlog(title : String, url : String, favicon : String)
-case class HatenaEntry(title : String, url : String)
 object HatenaBlog {
 	val URL = "http://numa08.hateblo.jp/"
 	val FEED_URL = URL + "/feed"
@@ -24,14 +23,14 @@ class HatenaBlogCreator extends SocialContentCreator{
     				 .title()
     val favicon = routes.Assets.at("img/icon/hatena.png").toString()
     val hatenaBlog = InternalSocialContent(title, favicon, "javascript:$.pageslide({ direction: 'left', href: 'blog/HatenaBlog' })",
-    										new URL(HatenaBlog.URL), new URI("../hatena_blog_feeds"))
+    										new URL(HatenaBlog.URL), new URI("../api/feed/HatenaBlog"))
     hatenaBlog
   }
 }
 
-class HatenaEntryAcuire {
+class HatenaEntryAcquire extends EntryAcquire {
   
-  def acuire : List[HatenaEntry] = {
+  def acquire : List[Entry] = {
     val url = new URL("http://numa08.hateblo.jp/feed")
     // hatena blog feeds's return "Content-Type: application/atom+xml" in reponse header
     // jsoup does not parse Mime-type like that.
@@ -40,7 +39,7 @@ class HatenaEntryAcuire {
     				 .map(elem => {
     				   val title = elem.getElementsByTag("title")(0).text()
     				   val link  = elem.getElementsByTag("link")(0).attr("href")
-    				   HatenaEntry(title, link)
+    				   Entry(title, link)
     				 }).toList
     feeds
   }

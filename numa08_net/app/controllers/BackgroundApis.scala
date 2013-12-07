@@ -7,34 +7,24 @@ import play.api.libs.concurrent.Execution.Implicits._
 import play.api.mvc._
 import play.api.libs.functional.syntax._
 import play.api.libs.json._
-import models.blogger.BloggerFeed
-import models.blogger.BloggerFeedAcuire
+import models.blogger._
+import models.EntryAcquireFactory
+
 
 object BackgroundApis extends Controller {
 
-  def hatenaBlogFeeds = Action.async{
-    implicit val hatenaEntryWrites: Writes[HatenaEntry] = (
-      (__ \ "title").write[String] and
-      (__ \ "url").write[String])(unlift(HatenaEntry.unapply))
-      
-    val futureImple = Future({
-      val entriesJson = new HatenaEntryAcuire().acuire
-    		  								   .map(Json.toJson(_))
-      JsArray(entriesJson)
-    })
-    futureImple.map(Ok(_))
+  def feeds(service : String) = Action.async{
+    val result = EntryAcquireFactory.buildByName(service) match {
+      case None => Future(BadRequest)
+      case Some(acquire) => {
+        val futureImple = Future({
+          val entryJson = acquire.acquire.map(_.toJson)
+          JsArray(entryJson)
+        })
+        futureImple.map(Ok(_))
+      }
+    }
+    result
   }
-
-  def bloggerFeeds = Action.async{
-    implicit val hatenaEntryWrites: Writes[BloggerFeed] = (
-      (__ \ "title").write[String] and
-      (__ \ "url").write[String])(unlift(BloggerFeed.unapply))
-      
-      val futureImple = Future({
-        val entriesJson = new BloggerFeedAcuire().acuire
-    		  									.map(Json.toJson(_))
-		JsArray(entriesJson)
-      })
-      futureImple.map(Ok(_))
-  }
+  
 }
