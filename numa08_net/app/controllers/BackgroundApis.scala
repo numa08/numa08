@@ -15,7 +15,7 @@ object BackgroundApis extends Controller {
 
   def feeds(service : String) = Action.async{
     val result = EntryAcquireFactory.buildByName(service) match {
-      case None => Future(BadRequest)
+      case None => Future(BadRequest("service not found"))
       case Some(acquire) => {
         val futureImple = Future({
           val entryJson = acquire.acquire.map(_.toJson)
