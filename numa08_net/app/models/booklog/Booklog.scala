@@ -15,7 +15,7 @@ import scala.io.Source
 
 object Booklog {
   val URL = "http://booklog.jp/users/numa08"
-  val FEED_URL = "http://api.booklog.jp/json/numa08"
+  val FEED_URL = "http://api.booklog.jp/json/numa08?count=15"
 }
 class BooklogCreator extends SocialContentCreator {
   
