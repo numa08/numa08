@@ -6,6 +6,7 @@ import play.api.libs.functional.syntax._
 import play.api.libs.json._
 import models.blogger.BloggerFeedAcquire
 import models.hatena.HatenaEntryAcquire
+import models.booklog.BooklogFeedAcquire
 
 
 class Entries {
@@ -30,7 +31,8 @@ abstract class EntryAcquire {
 
 object EntryAcquireFactory {
   def acquires = Map("Blogger" -> new BloggerFeedAcquire(),
-		  			 "HatenaBlog" -> new HatenaEntryAcquire())
+		  			 "HatenaBlog" -> new HatenaEntryAcquire(),
+		  			 "Booklog" -> new BooklogFeedAcquire())
 		  			 
  def buildByName(name : String) = acquires.get(name)
 }
