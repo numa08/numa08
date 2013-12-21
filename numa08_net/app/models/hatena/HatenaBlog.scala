@@ -8,6 +8,8 @@ import controllers.routes
 import controllers.Assets
 import models._
 import java.net.URI
+import play.api.cache.Cache
+import play.api.Play.current
 
 
 case class HatenaBlog(title : String, url : String, favicon : String)
@@ -34,13 +36,17 @@ class HatenaEntryAcquire extends EntryAcquire {
     val url = new URL("http://numa08.hateblo.jp/feed")
     // hatena blog feeds's return "Content-Type: application/atom+xml" in reponse header
     // jsoup does not parse Mime-type like that.
-    val feeds = Jsoup.parse(url.openStream(), "UTF-8", url.toString())
-    				 .getElementsByTag("entry")
-    				 .map(elem => {
-    				   val title = elem.getElementsByTag("title")(0).text()
-    				   val link  = elem.getElementsByTag("link")(0).attr("href")
-    				   Entry(title, link)
-    				 }).toList
+    val feeds = Cache.getOrElse[List[Entry]]("hatena_entry") {
+      Jsoup.parse(url.openStream(), "UTF-8", url.toString())
+        .getElementsByTag("entry")
+        .map(elem => {
+          val title = elem.getElementsByTag("title")(0).text()
+          val link = elem.getElementsByTag("link")(0).attr("href")
+          Entry(title, link)
+        }).toList
+    }
+      
+
     feeds
   }
 }

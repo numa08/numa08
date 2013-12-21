@@ -10,7 +10,9 @@ import java.net.URL
 import java.net.URI
 import models.EntryAcquire
 import models.Entry
-
+import play.api.cache.Cache
+import play.api.Play.current
+ 
 object Blogger {
   val URL = "http://numa08.blogspot.jp/"
   val FEED_URL = "http://feeds.feedburner.com/Numa08"
@@ -34,14 +36,19 @@ class BloggerFeedAcquire extends EntryAcquire {
   
   def acquire : List[Entry] = {
     val url = Blogger.FEED_URL
-    val feeds = Jsoup.connect(url)
-    				 .get()
-    				 .getElementsByTag("entry")
-    				 .map(elem => {
-    				   val title = elem.getElementsByTag("title")(0).text()
-    				   val link  = elem.getElementsByTag("feedburner:origLink")(0).text
-    				   Entry(title, link)
-    				 }).toList
+    
+    val feeds = Cache.getOrElse[List[Entry]]("blogger_entry"){
+      Jsoup.connect(url)
+        .get()
+        .getElementsByTag("entry")
+        .map(elem => {
+          val title = elem.getElementsByTag("title")(0).text()
+          val link = elem.getElementsByTag("feedburner:origLink")(0).text
+          Entry(title, link)
+        }).toList
+    }
+      
+
     feeds
   }
 }
