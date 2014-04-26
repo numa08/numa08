@@ -1,13 +1,18 @@
-# Windows files
-Thumbs.db
-
-# Mac OS files
-.DS_Store
-
-# Cygwin files
-*.stackdump
-
-# vim file
-*.swp
-
-.metadata/
+logs
+project/project
+project/target
+target
+tmp
+.history
+dist
+/.idea
+/*.iml
+/out
+/.idea_modules
+/.classpath
+/.project
+/RUNNING_PID
+/.settings
+/.target
+/.cache
+/bin
