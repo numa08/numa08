@@ -1,3 +1,4 @@
+language: bash
 script: echo "do nothing"
 deploy:
   provider: s3
@@ -5,5 +6,7 @@ deploy:
   bucket: stage.numa08.net
   secret_access_key:
     secure: SUO45gWhYFfzsRW5efLEGh4JxRRb7YwK71YioiDTDfyTyAnYca/2Hy4vZ1HmH+6LyvOz4/pmYv/tFLkmMoS1ZNU6EXFIcYaQYnHSKNulKOANojhWTWkEAz9Dcg/dxZTPGEYA66deauwMlWCj36aylMzcQDiQYZDdfInWOXfjILo=
+  endpoint: s3-ap-northeast-1.amazonaws.com
+  region: ap-northeast-1        
   on:
-    branch: *          
+    all_branches: true
