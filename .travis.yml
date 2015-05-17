@@ -1,0 +1,6 @@
+deploy:
+  provider: s3
+  access_key_id: AKIAJV3EZVWDMMEB3THA
+  bucket: stage.numa08.net
+  secret_access_key:
+    secure: SUO45gWhYFfzsRW5efLEGh4JxRRb7YwK71YioiDTDfyTyAnYca/2Hy4vZ1HmH+6LyvOz4/pmYv/tFLkmMoS1ZNU6EXFIcYaQYnHSKNulKOANojhWTWkEAz9Dcg/dxZTPGEYA66deauwMlWCj36aylMzcQDiQYZDdfInWOXfjILo=
