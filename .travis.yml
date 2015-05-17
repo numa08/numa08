@@ -5,3 +5,5 @@ deploy:
   bucket: stage.numa08.net
   secret_access_key:
     secure: SUO45gWhYFfzsRW5efLEGh4JxRRb7YwK71YioiDTDfyTyAnYca/2Hy4vZ1HmH+6LyvOz4/pmYv/tFLkmMoS1ZNU6EXFIcYaQYnHSKNulKOANojhWTWkEAz9Dcg/dxZTPGEYA66deauwMlWCj36aylMzcQDiQYZDdfInWOXfjILo=
+  on:
+    branch: *          
