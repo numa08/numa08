@@ -1,0 +1,14 @@
+body {
+	background: url('https://secure.gravatar.com/bg/33502174/dc85ec471aa36b10b626bdbd9277845e') center;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding-top: 60px;
+}
+
+.contents {
+	padding: 4px;
+	background: rgba(255, 255, 255, 0.9);
+}
